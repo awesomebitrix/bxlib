@@ -1,0 +1,19 @@
+{
+	"name": "marvin255/bxlib",
+	"description": "Библиотека полезностей для битрикса",
+	"type": "library",
+	"keywords": ["bitrix", "битрикс"],
+	"license": "MIT",
+	"require": {
+		"php": ">=5.3.2"
+	},
+	"autoload": {
+		"psr-4": { "marvin255\\bxlib\\": "lib/" }
+	},
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/marvin255/bxlib"
+		}
+	]
+}
