@@ -50,6 +50,15 @@ class IblockLocator
 		return $this->findBy('CODE', $code, 'ID');
 	}
 
+	/**
+	 * @param string $id
+	 * @return string
+	 */
+	public function getCodeById($id)
+	{
+		return $this->findBy('ID', $id, 'CODE');
+	}
+
 
 	/**
 	 * @param string $field
