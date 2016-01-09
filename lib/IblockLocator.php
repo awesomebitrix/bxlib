@@ -18,6 +18,7 @@ class IblockLocator
 		'ID',
 		'CODE',
 		'NAME',
+		'LID',
 		'PROPERTIES',
 	];
 	/**
