@@ -152,7 +152,7 @@ class IblockLocator
 				$this->_list[$ob['ID']] = $arItem;
 			}
 			if (in_array('PROPERTIES', $this->select) && !empty($this->_list)) {
-				$pRes = \CIBlockProperty::GetList([], []);
+				$pRes = \CIBlockProperty::GetList(['sort' => 'asc'], []);
 				while ($pOb = $pRes->Fetch()) {
 					if (!isset($this->_list[$pOb['IBLOCK_ID']])) continue;
 					$this->_list[$pOb['IBLOCK_ID']]['PROPERTIES'][] = $pOb;
