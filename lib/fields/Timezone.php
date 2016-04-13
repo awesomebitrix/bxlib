@@ -18,7 +18,7 @@ class Timezone extends \CUserTypeString
 	{
 		return array(
 			"PROPERTY_TYPE" => "S",
-			"USER_TYPE" => "Timezone",
+			"USER_TYPE" => "BxlibTimezone",
 			"DESCRIPTION" => "Список часовых поясов",
 			"GetPropertyFieldHtml" => ['\marvin255\bxlib\fields\Timezone', "GetPropertyFieldHtml"],
 			"GetPublicViewHTML" => ['\marvin255\bxlib\fields\Timezone', "GetPublicViewHTML"],
