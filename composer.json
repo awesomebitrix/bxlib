@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"require": {
 		"php": ">=5.3.2",
-		"symfony/http-foundation": "*",
+		"symfony/http-foundation": "*"
 	},
 	"autoload": {
 		"psr-4": { "marvin255\\bxlib\\": "lib/" }
