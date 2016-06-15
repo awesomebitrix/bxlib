@@ -82,4 +82,15 @@ class Request
 		}
 		return $ip;
 	}
+
+	/**
+	 * Возвращает домен для текущего сайта вместе с протоколом
+	 * @return string
+	 */
+	public function getFullDomain()
+	{
+		return $this->getRequest()->server->get('REQUEST_SCHEME')
+			. '://'
+			. $this->getRequest()->server->get('HTTP_HOST');
+	}
 }
