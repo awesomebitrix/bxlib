@@ -63,7 +63,7 @@ class CanvasPolygon extends \CUserTypeString
 
 		$id = 'canv_' . md5('CanvasPolygon' . $name . self::$counter);
 		$html = <<<EOD
-	<div style="max-width: 100%; height: 600px; overflow: scroll;">
+	<div style="max-width: 100%; max-height: 600px; overflow: scroll;">
 		<input type="hidden" value="{$value}" id="{$id}" name="{$name}">
 	</div>
 	<button id="reset_{$id}">Очистить</button>
@@ -95,18 +95,25 @@ EOD;
 		$link = strtoupper($arProperty['USER_TYPE_SETTINGS']['PROPERTY_LINK']);
 		if ($link && !empty($current[$link])) {
 			//узнаем инфоблок привязанного свойства
-			$res = \CIBlockElement::GetById($current[$link]);
-			if ($ob = $res->Fetch()) {
-				if (strpos($p, 'PROPERTY_') === 0) {
-					$pres = \CIBlockElement::GetProperty(
-						$ob['IBLOCK_ID'],
-						$ob['ID'],
-						[],
-						['CODE' => substr($p, 9)]
-					);
-					if ($pob = $pres->Fetch()) $image = $pob['VALUE'];
-				} else {
+			if ($link === 'IBLOCK_SECTION_ID') {
+				$res = \CIBlockSection::GetById($current[$link]);
+				if ($ob = $res->Fetch()) {
 					$image = isset($ob[$p]) ? $ob[$p] : null;
+				}
+			} else {
+				$res = \CIBlockElement::GetById($current[$link]);
+				if ($ob = $res->Fetch()) {
+					if (strpos($p, 'PROPERTY_') === 0) {
+						$pres = \CIBlockElement::GetProperty(
+							$ob['IBLOCK_ID'],
+							$ob['ID'],
+							[],
+							['CODE' => substr($p, 9)]
+						);
+						if ($pob = $pres->Fetch()) $image = $pob['VALUE'];
+					} else {
+						$image = isset($ob[$p]) ? $ob[$p] : null;
+					}
 				}
 			}
 		} elseif (!empty($current[$p])) {
